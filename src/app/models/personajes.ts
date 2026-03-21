@@ -6,5 +6,5 @@ export interface Personajes {
 }
 
 export interface RespuestaApi{
-    data:Personajes[];
+    items: Personajes[];
 }

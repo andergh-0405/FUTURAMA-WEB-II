@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { Staff } from '../../shared/staff/staff';
 
 @Component({
   selector: 'app-personajes',
-  imports: [],
+  imports: [Staff],
   templateUrl: './personajes.html',
   styleUrl: './personajes.css',
 })

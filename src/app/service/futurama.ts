@@ -10,10 +10,10 @@ export class Futurama {
 
   private http = inject(HttpClient);
 
-  private API_PERSONAJES = 'https://futuramaapi.com/';
+  private API_FUTURAMA = 'https://futuramaapi.com/api/characters';
 
   getPersonajes():Observable <RespuestaApi>{
-    return this.http.get<RespuestaApi>(this.API_PERSONAJES)
+    return this.http.get<RespuestaApi>(this.API_FUTURAMA)
   }
 
 }

@@ -12,12 +12,16 @@ export class Staff {
 
   private servicioPersonaje = inject(Futurama);
 
-  personajes = signal<Personajes[]>([])
+  personaje = signal<Personajes[]>([])
 
-  leerPersonajes(){
+  ngOnInit(): void {
+    this.leerPersonajes();
+  }
+
+  leerPersonajes() {
     this.servicioPersonaje.getPersonajes().subscribe(datos =>
-      this.personajes.set(datos.data)
-    )
+      this.personaje.set(datos.items)
+    );
   }
 
 }
