@@ -1,0 +1,78 @@
+<div class="min-h-screen bg-slate-950 flex flex-col justify-center py-10 sm:px-6 lg:px-8 font-sans">
+
+  <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
+    <div class="inline-block p-3 rounded-full bg-cyan-400 mb-4 border-4 border-black group">
+      <span class="text-3xl inline-block group-hover:animate-bounce">📝</span>
+    </div>
+    <h2 class="text-4xl font-black text-white tracking-tighter uppercase italic">
+      NUEVO <span class="text-red-500">RECLUTA</span>
+    </h2>
+    <p class="mt-2 text-cyan-400 font-mono text-xs tracking-widest uppercase">
+      — Formulario de Inscripción Planet Express —
+    </p>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div
+      class="bg-slate-800 py-8 px-6 border-4 border-cyan-500 sm:rounded-2xl sm:px-10 shadow-[8px_8px_0px_0px_rgba(34,211,238,0.3)]">
+      <form (ngSubmit)="registrarUsuario()" class="space-y-5">
+
+        <div>
+          <label for="name" class="block text-[10px] font-bold text-cyan-300 uppercase tracking-[0.2em]">
+            Nombre del Tripulante
+          </label>
+          <div class="mt-1">
+            <input id="name" [(ngModel)]="nuevoUsuario.name"  name="name" type="text" placeholder="Ej. Philip J. Fry"
+              class="block w-full px-4 py-2.5 bg-slate-900 border-2 border-slate-700 rounded-none text-white placeholder-slate-600 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 sm:text-sm transition-all">
+          </div>
+        </div>
+
+        <div>
+          <label for="phone" class="block text-[10px] font-bold text-cyan-300 uppercase tracking-[0.2em]">
+            Código de Marcado Galáctico
+          </label>
+          <div class="mt-1">
+            <input id="phone" [(ngModel)]="nuevoUsuario.phone"  name="phone" type="tel" placeholder="099-3000-999"
+              class="block w-full px-4 py-2.5 bg-slate-900 border-2 border-slate-700 rounded-none text-white placeholder-slate-600 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 sm:text-sm transition-all">
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-[10px] font-bold text-cyan-300 uppercase tracking-[0.2em]">
+            Frecuencia de Radio (Email)
+          </label>
+          <div class="mt-1">
+            <input id="email" [(ngModel)]="nuevoUsuario.email"  name="email" type="email" required placeholder="fry@delivery.com"
+              class="block w-full px-4 py-2.5 bg-slate-900 border-2 border-slate-700 rounded-none text-white placeholder-slate-600 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 sm:text-sm transition-all">
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-[10px] font-bold text-cyan-300 uppercase tracking-[0.2em]">
+            Clave de Acceso Cuántico
+          </label>
+          <div class="mt-1">
+            <input id="password" [(ngModel)]="nuevoUsuario.password"  name="password" type="password" required placeholder="••••••••••••"
+              class="block w-full px-4 py-2.5 bg-slate-900 border-2 border-slate-700 rounded-none text-white placeholder-slate-600 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 sm:text-sm transition-all">
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" routerLink="/login"
+            class="w-full flex justify-center py-4 px-4 border-b-4 border-red-800 rounded-lg text-sm font-black uppercase tracking-tighter text-white bg-red-600 hover:bg-red-500 hover:scale-[1.02] active:border-b-0 active:translate-y-1 transition-all">
+            🚀 ¡Unirse a la Tripulación!
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-6 border-t border-slate-700 pt-6">
+        <p class="text-center text-xs text-slate-400">
+          ¿Ya eres un veterano?
+          <a routerLink="/login" class="font-bold text-yellow-400 hover:text-white transition-colors uppercase ml-1">
+            Inicia sesión aquí
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

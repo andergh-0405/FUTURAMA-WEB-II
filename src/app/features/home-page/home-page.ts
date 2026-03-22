@@ -1,27 +1,24 @@
 import { Component, inject, signal } from '@angular/core';
 import { Futurama } from '../../service/futurama';
 import { Personajes } from '../personajes/personajes';
+import { AuthService } from '../../service/auth-service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })
 export class HomePage {
 
-  private servicioPersonaje = inject(Futurama);
-
-  personaje = signal<Personajes[]>([])
-
-  ngOnInit(): void {
-    this.leerPersonajes();
-  }
-
-  leerPersonajes() {
-    this.servicioPersonaje.getPersonajes().subscribe(datos =>
-      this.personaje.set(datos.items)
-    );
-  }
+  private servicioAuth = inject(AuthService);
+  
+  
+    isLoggedIn = this.servicioAuth.sesionIniciada;
+  
+    verMensaje(){
+      alert("Recuerda Iniciar Sesion");
+    }
 
 }

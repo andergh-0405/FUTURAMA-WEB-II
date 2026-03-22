@@ -1,73 +1,107 @@
-<div  class="max-w-5xl mx-auto p-6 bg-slate-50 min-h-screen">
+<div class="min-h-screen bg-slate-950 p-6 font-sans">
+    <div class="max-w-6xl mx-auto">
 
-    <h1 class="text-3xl font-extrabold text-slate-800 mb-8 border-b-4 border-indigo-500 inline-block">
-        Gestión de Usuarios - Veterinaria
-    </h1>
+        <div class="mb-10 border-l-8 border-red-600 pl-6">
+            <h1 class="text-4xl font-black text-white italic uppercase tracking-tighter">
+                CONTROL DE <span class="text-cyan-400 font-mono">PERSONAL</span>
+            </h1>
+            <p class="text-slate-500 font-mono text-xs mt-1 uppercase tracking-widest">
+                — Base de Datos Central de Planet Express —
+            </p>
+        </div>
 
-    
+        <div
+            class="bg-slate-900 p-8 border-4 border-slate-800 rounded-none mb-10 shadow-[10px_10px_0px_0px_rgba(220,38,38,0.2)]">
+            <div class="flex items-center gap-2 mb-6">
+                <div class="w-3 h-3 rounded-full bg-red-600 animate-pulse"></div>
+                <h2 class="text-xl font-black text-white uppercase italic">
+                    {{ editando ? 'Modificar Expediente' : 'Reclutar Nuevo Tripulante' }}
+                </h2>
+            </div>
 
-    <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-200 mb-10">
-        <h2 class="text-xl font-bold text-slate-700 mb-4">Registro Rápido</h2>
-        <form  (ngSubmit)="registrarUsuario()"  class="grid grid-cols-1 md:grid-cols-3 gap-4" validate>
-            <input [(ngModel)]="nuevoUsuario.name" name="name" type="text" placeholder="Nombre completo" required
-                class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+            <form (ngSubmit)="registrarUsuario()" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-cyan-500 uppercase">Sujeto / Nombre</label>
+                    <input [(ngModel)]="nuevoUsuario.name" name="name" type="text" placeholder="Philip J. Fry" required
+                        class="w-full px-4 py-3 bg-slate-950 border-2 border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 transition-all">
+                </div>
 
-            <input  [(ngModel)]="nuevoUsuario.email" name="email" type="email" placeholder="Correo" required
-                class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-cyan-500 uppercase">Marcado Galáctico</label>
+                    <input [(ngModel)]="nuevoUsuario.phone" name="phone" type="text" placeholder="099-3000" required
+                        class="w-full px-4 py-3 bg-slate-950 border-2 border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 transition-all">
+                </div>
 
-            <input [(ngModel)]="nuevoUsuario.password" name="password" type="password" placeholder="********" required
-                class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-cyan-500 uppercase">Email</label>
+                    <input [(ngModel)]="nuevoUsuario.email" name="email" type="email" placeholder="fry@delivery.com"
+                        required
+                        class="w-full px-4 py-3 bg-slate-950 border-2 border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 transition-all">
+                </div>
 
-            <input [(ngModel)]="nuevoUsuario.phone" name="phone" type="text" placeholder="Teléfono" required
-                class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-cyan-500 uppercase">Código de Acceso</label>
+                    <input [(ngModel)]="nuevoUsuario.password" name="password" type="password" placeholder="********"
+                        required
+                        class="w-full px-4 py-3 bg-slate-950 border-2 border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 transition-all">
+                </div>
 
-            <button type="submit"
-                class="md:col-span-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-indigo-200">
-                {{ editando ? 'Actualizar Usuario' : 'Registrar Usuario' }}
-            </button>
-        </form>
-    </div>
+                <button type="submit"
+                    class="md:col-span-2 lg:col-span-4 py-4 px-6 border-b-4 border-red-800 rounded-lg text-sm font-black uppercase tracking-tighter text-white bg-red-600 hover:bg-red-500 active:border-b-0 active:translate-y-1 transition-all shadow-lg">
+                    {{ editando ? '💾 Sobrescribir Datos' : '🚀 Cargar al Sistema' }}
+                </button>
+            </form>
+        </div>
 
-    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
-        <table class="w-full text-left border-collapse">
-            <thead class="bg-slate-800 text-slate-100">
-                <tr>
-                    <th class="p-4 font-semibold uppercase text-sm">Acciones</th>
-                    <th class="p-4 font-semibold uppercase text-sm">ID</th>
-                    <th class="p-4 font-semibold uppercase text-sm">Nombre</th>
-                    <th class="p-4 font-semibold uppercase text-sm">Email</th>
-                    <th class="p-4 font-semibold uppercase text-sm">Teléfono</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (usuario of listaUsuarios(); track usuario.name) {
-                <tr class="border-b border-slate-100 hover:bg-indigo-50 transition-colors">
-                    <td class="p-4">
-                        @if (servicioAuth.rolActual() === 'ROLE_ADMIN') {
-                            <button (click)="seleccionarParaEditar(usuario)" class="mr-10">
+        <div class="bg-slate-900 border-4 border-slate-800 overflow-hidden shadow-[10px_10px_0px_0px_rgba(0,0,0,0.5)]">
+            <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-800 border-b-2 border-slate-700">
+                    <tr>
+                        <th class="p-4 font-black text-cyan-400 uppercase text-xs tracking-widest">Acciones</th>
+                        <th class="p-4 font-black text-slate-400 uppercase text-xs tracking-widest">ID</th>
+                        <th class="p-4 font-black text-slate-400 uppercase text-xs tracking-widest">Tripulante</th>
+                        <th class="p-4 font-black text-slate-400 uppercase text-xs tracking-widest">Email</th>
+                        <th class="p-4 font-black text-slate-400 uppercase text-xs tracking-widest">Contacto</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800">
+                    @for (usuario of listaUsuarios(); track usuario.id) {
+                    <tr class="hover:bg-slate-800/50 transition-colors group">
+                        <td class="p-4">
+                            @if(servicioAuth.rolActual()==='ROLE_ADMIN'){
+                            <button (click)="seleccionarParaEditar(usuario)"
+                                class="text-xl grayscale hover:grayscale-0 hover:scale-125 transition-all"
+                                title="Editar">
                                 ✏️
                             </button>
-                            <button (click)="eliminarUsuario(usuario.id!)" class="mr-10">
+                            <button (click)="eliminarUsuario(usuario.id!)"
+                                class="text-xl grayscale hover:grayscale-0 hover:scale-125 transition-all"
+                                title="Eliminar">
                                 🗑️
-                        </button>
-                    }@else {
-                        <span>🔒</span>
-                    }
+                            </button>
+                            }@else {
+                                <span>🔒</span>
+                            }
 
-                    </td>
-                    <td class="p-4 text-slate-500 font-mono text-xs">{{ usuario.id }}</td>
-                    <td class="p-4 text-slate-800 font-medium">{{ usuario.name }}</td>
-                    <td class="p-4 text-slate-600">{{ usuario.email }}</td>
-                    <td class="p-4 text-slate-600">{{ usuario.phone }}</td>
-                </tr>
-                }@empty {
-                <tr>
-                    <td colspan="4" class="p-8 text-center text-slate-400 italic">
-                        Cargando usuarios desde la API...
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
+
+
+                        </td>
+                        <td class="p-4 text-slate-500 font-mono text-[10px] italic">#{{ usuario.id }}</td>
+                        <td class="p-4 text-white font-bold uppercase tracking-tighter">{{ usuario.name }}</td>
+                        <td class="p-4 text-cyan-300 font-mono text-xs opacity-70 group-hover:opacity-100">{{
+                            usuario.email }}</td>
+                        <td class="p-4 text-yellow-500 font-mono text-xs italic">{{ usuario.phone }}</td>
+                    </tr>
+                    } @empty {
+                    <tr>
+                        <td colspan="5"
+                            class="p-12 text-center text-slate-600 font-mono text-sm uppercase animate-pulse">
+                            No hay tripulantes detectados en el sector...
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

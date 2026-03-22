@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Usuarios } from '../../service/usuarios';
 import { Usuario } from '../../models/usuario';
+import { AuthService } from '../../service/auth-service';
 
 @Component({
   selector: 'app-formulario',
@@ -15,9 +16,7 @@ import { Usuario } from '../../models/usuario';
 export class Formulario {
 
   private servicioUsuario = inject(Usuarios);
- 
-
-
+  public servicioAuth = inject(AuthService);
 
   //LISTA REACTIVA
   listaUsuarios = signal<Usuario[]>([]);
@@ -88,9 +87,7 @@ export class Formulario {
     }
   }
 
-  hasUnsavedChanges(): boolean {
-    return this.editando || this.nuevoUsuario.name !== '' || this.nuevoUsuario.email !== '' || this.nuevoUsuario.phone !== '' || this.nuevoUsuario.password !== '';
-  }
+  
 
  
 

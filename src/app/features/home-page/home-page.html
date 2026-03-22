@@ -1,29 +1,57 @@
-<header class="bg-indigo-700 text-white">
-  <div class="container px-6 py-16 mx-auto">
-    <div class="items-center lg:flex">
-      <!-- Texto -->
+<header class="bg-slate-900 border-b-8 border-yellow-400 overflow-hidden relative">
+  <div
+    class="absolute top-0 left-0 w-full h-2 bg-[repeating-linear-gradient(45deg,#fbbf24,#fbbf24_10px,#000_10px,#000_20px)] opacity-20">
+  </div>
+
+  <div class="container px-6 py-16 mx-auto relative">
+    <div class="items-center lg:flex lg:gap-12">
+
       <div class="w-full lg:w-1/2">
-        <div class="lg:max-w-lg">
-          <h1 class="text-3xl font-semibold text-yellow-300 lg:text-5xl">
-            PERSONAJES FUTURAMA
+        <div class="lg:max-w-lg space-y-6">
+          <span
+            class="inline-block px-3 py-1 text-[10px] font-black tracking-[0.3em] text-cyan-400 border border-cyan-400 uppercase">
+            Transmisión Entrante: Quadrante 7
+          </span>
+
+          <h1 class="text-5xl font-black text-white lg:text-7xl italic uppercase tracking-tighter leading-none">
+            PERSONAJES <br>
+            <span class="text-red-600 drop-shadow-[4px_4px_0px_rgba(255,255,255,1)]">FUTURAMA</span>
           </h1>
 
-          <p class="mt-3 text-gray-100">
-            Aquí encontrarás a los personajes más icónicos de la serie.
+          <p class="mt-4 text-slate-400 font-mono text-sm leading-relaxed border-l-4 border-slate-700 pl-4">
+            Base de datos oficial de la tripulación de Planet Express.
+            Aquí encontrarás los expedientes de los seres más icónicos (y extraños) del siglo 31.
           </p>
 
-          
+          <div class="pt-4">
+            @if (isLoggedIn()){
+              <button routerLink="/personajes"
+              class="bg-yellow-400 text-black font-black uppercase py-3 px-8 text-xs tracking-widest border-b-4 border-yellow-700 hover:bg-yellow-300 active:border-b-0 active:translate-y-1 transition-all">
+              Explorar Galaxia
+            </button>
+            }@else{
+              <button (click)="verMensaje()"
+              class="bg-yellow-400 text-black font-black uppercase py-3 px-8 text-xs tracking-widest border-b-4 border-yellow-700 hover:bg-yellow-300 active:border-b-0 active:translate-y-1 transition-all">
+              Explorar Galaxia
+            </button>
+            }
+            
+          </div>
         </div>
       </div>
 
-      <!-- Imagen -->
-      <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-        <img
-          class="w-full h-full lg:max-w-3xl"
-          src="https://i.blogs.es/ef67e3/futurama/840_560.jpeg"
-          alt="Futurama Banner"
-        />
+      <div class="flex items-center justify-center w-full mt-10 lg:mt-0 lg:w-1/2">
+        <div class="relative p-2 bg-slate-800 border-4 border-slate-700 shadow-[15px_15px_0px_0px_rgba(220,38,38,0.4)]">
+          <div class="absolute inset-0 bg-cyan-500/5 pointer-events-none z-10"></div>
+
+          <img class="w-full h-auto object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+            src="https://i.blogs.es/ef67e3/futurama/840_560.jpeg" alt="Futurama Banner" />
+
+          <div class="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-cyan-400"></div>
+          <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-cyan-400"></div>
+        </div>
       </div>
+
     </div>
   </div>
 </header>

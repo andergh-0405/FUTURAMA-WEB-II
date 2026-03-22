@@ -1,53 +1,66 @@
-<header class="bg-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-            <div class="flex items-center gap-3">
-                <a href="#" class="flex items-center text-teal-600 gap-3">
-                
-                    <h1 class="font-medium text-teal-600">FUTURAMA</h1>
-                </a>
-            </div>
+<header class="bg-slate-900 border-b-4 border-red-600 shadow-md">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <a routerLink="/" class="flex items-center gap-3 group">
+          <div class="bg-yellow-400 p-1.5 rounded-sm border-2 border-black group-hover:rotate-12 transition-transform">
+            🚀
+          </div>
+          <h1 class="font-black text-2xl text-white tracking-tighter italic uppercase">
+            FUTURAMA <span class="text-red-500">SYS</span>
+          </h1>
+        </a>
+      </div>
 
-            <div class="hidden md:block">
-                <nav aria-label="Global">
-                    <ul class="flex items-center gap-6 text-sm">
-                        <li>
-                            <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Home </a>
-                        </li>
-                        <li>
-                            <a routerLink="personajes" class="text-gray-500 transition hover:text-gray-500/75" > Personajes </a>
-                        </li>
+      <div class="hidden md:block">
+        <nav aria-label="Global">
+          <ul class="flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-300">
+            <li><a routerLink="/" class="hover:text-yellow-400 transition-colors">[ Home ]</a></li>
 
-                        <li>
-                            <a routerLink="formulario" class="text-gray-500 transition hover:text-gray-500/75" > Usuarios </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            @if (isLoggedIn()){
+            <li><a routerLink="personajes" class="hover:text-yellow-400 transition-colors">[ Personajes ]</a></li>
+            }
+            @if (rolActual() === 'ROLE_ADMIN'){
+                <li><a routerLink="/formulario" class="hover:text-yellow-400 transition-colors">[ Tripulantes ]</a></li>
+            }
+             
 
-            <div class="flex items-center gap-4">
-                <div class="sm:flex sm:gap-4">
-                    <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm" routerLink="/login">
-                        Login
-                    </a>
+          </ul>
+        </nav>
+      </div>
 
-                    
+      <div class="flex items-center gap-4">
+        
+        @if (isLoggedIn()) {
+          <div class="flex items-center gap-4">
+            <span class="text-[10px] font-mono text-slate-500 uppercase hidden sm:block">
+              Tripulante: <span class="text-green-500">{{ nombreActual()}}</span>
+            </span>
 
-                    <a   class="rounded-md bg-red-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm" routerLink="/login">
-                        Cerrar Sesion
-                    </a>
-                    
-                </div>
+            <button (click)="logout()" 
+               class="bg-red-600 px-5 py-2 text-xs font-black uppercase text-white border-b-4 border-red-900 hover:bg-red-500 active:border-b-0 active:translate-y-1 transition-all shadow-lg">
+              Terminar Turno (Logout)
+            </button>
+          </div>
+        } @else {
+          <div class="sm:flex sm:gap-4">
+            <a routerLink="/login"
+               class="cursor-pointer border-2 border-cyan-500 bg-transparent px-5 py-2 text-xs font-black uppercase text-cyan-400 hover:bg-cyan-500 hover:text-slate-900 transition-all active:translate-y-0.5">
+              Identificarse (Acceder)
+            </a>
+          </div>
+        }
 
-                <div class="block md:hidden">
-                    <button class="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+        <div class="block md:hidden">
+          <button class="bg-slate-800 p-2 text-cyan-400 border-2 border-slate-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="square" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
+
+      </div>
     </div>
+  </div>
 </header>
